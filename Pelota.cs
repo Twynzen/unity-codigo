@@ -9,11 +9,32 @@ public class Pelota : MonoBehaviour
 
     bool enJuego = false;
 
+    Vector3 posicionInicial;
+    public Transform barra;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        posicionInicial = transform.position;
+    }
+
+    public void Reset()
+    {
+        transform.position = posicionInicial;
+        transform.SetParent(barra);
+        enJuego = false; 
+        rig.isKinematic = true;
+        rig.velocity = Vector3.zero;
+
+    }
+
+    public void DetenerMovimiento()
+    {
+        rig.isKinematic = true;
+        rig.velocity = Vector3.zero;
     }
 
     // Update is called once per frame
