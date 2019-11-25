@@ -13,6 +13,11 @@ public class vidas : MonoBehaviour
     public Pelota pelota;
 
     public Barra barra;
+
+    public GameObject Perdiste;
+    public SiguienteNivel siguienteNivel;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +31,27 @@ public class vidas : MonoBehaviour
  
     public void PerderVida(){
 
+        if (Vidas <= 0) return;
+        
         vidas.Vidas--;
         ActualizarMarcadorVidas();
+
+        if (Vidas <= 0)
+        {
+            //Mostramos el perdiste
+            Perdiste.SetActive(true);
+            pelota.DetenerMovimiento();
+            barra.enabled = false;
+
+            siguienteNivel.nivelACargar = "Portada";
+            siguienteNivel.ActivarCarga();
+
+        }else
+        {
+            barra.Reset();
+            pelota.Reset();
+        }
+
         barra.Reset();
         pelota.Reset();
 
