@@ -8,6 +8,19 @@ public class Puntos : MonoBehaviour
     public static int puntos = 0;
     public Text textoPuntos;
 
+    public GameObject Nilvecompletado;
+    public GameObject completado;
+
+    public SiguienteNivel siguienteNivel;
+
+    public Pelota pelota;
+
+    public Transform contenedorBloques;
+    public Barra barra;
+
+
+
+
     void Start()
     {
         ActualizarMarcadorPuntos(); 
@@ -18,7 +31,22 @@ public class Puntos : MonoBehaviour
     }
 
     public void GanarPunto(){
+
         Puntos.puntos++;
         ActualizarMarcadorPuntos();
+
+        if (contenedorBloques.childCount <= 0)
+        {
+            pelota.DetenerMovimiento();
+            barra.enabled = false;     
+            if (siguienteNivel.EsUltimoNivel())
+            {
+                completado.SetActive(true);
+            }else
+            {
+                Nilvecompletado.SetActive(true);
+            }  
+            siguienteNivel.ActivarCarga();     
+        }
     }
 }
