@@ -8,7 +8,7 @@ public class Puntos : MonoBehaviour
     public static int puntos = 0;
     public Text textoPuntos;
 
-    public GameObject Nilvecompletado;
+    public GameObject Nivelcompletado;
     public GameObject completado;
 
     public SiguienteNivel siguienteNivel;
@@ -17,6 +17,8 @@ public class Puntos : MonoBehaviour
 
     public Transform contenedorBloques;
     public Barra barra;
+
+    public sonidosFinPartida sonFinPartida;
 
 
 
@@ -44,8 +46,11 @@ public class Puntos : MonoBehaviour
                 completado.SetActive(true);
             }else
             {
-                Nilvecompletado.SetActive(true);
+                Nivelcompletado.SetActive(true);
             }  
+
+            sonFinPartida.NivelCompletado();
+
             siguienteNivel.ActivarCarga();     
         }
     }

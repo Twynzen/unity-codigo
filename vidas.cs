@@ -17,6 +17,8 @@ public class vidas : MonoBehaviour
     public GameObject Perdiste;
     public SiguienteNivel siguienteNivel;
 
+    public sonidosFinPartida sonidoFinPartida;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +39,8 @@ public class vidas : MonoBehaviour
         ActualizarMarcadorVidas();
 
         if (Vidas <= 0)
-        {
+        {   
+            sonidoFinPartida.GameOver();
             //Mostramos el perdiste
             Perdiste.SetActive(true);
             pelota.DetenerMovimiento();
