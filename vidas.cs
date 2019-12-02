@@ -19,8 +19,10 @@ public class vidas : MonoBehaviour
 
     public sonidosFinPartida sonidoFinPartida;
 
+    public sonidoSuelo sonidoErr;
 
-    // Start is called before the first frame update
+
+    
     void Start()
     {
         ActualizarMarcadorVidas();
@@ -43,6 +45,7 @@ public class vidas : MonoBehaviour
             sonidoFinPartida.GameOver();
             //Mostramos el perdiste
             Perdiste.SetActive(true);
+            sonidoErr.sonidoError();
             pelota.DetenerMovimiento();
             barra.enabled = false;
 
@@ -51,8 +54,10 @@ public class vidas : MonoBehaviour
 
         }else
         {
+            
             barra.Reset();
             pelota.Reset();
+            sonidoErr.sonidoError();
         }
 
         barra.Reset();
