@@ -13,6 +13,10 @@ public class SiguienteNivel : MonoBehaviour
     }
 
     void CargarNivel(){
+        if (!EsUltimoNivel())
+        {
+            vidas.Vidas++;
+        }
         Application.LoadLevel(nivelACargar);
     }
 
