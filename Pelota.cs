@@ -7,13 +7,12 @@ public class Pelota : MonoBehaviour
     public float velocidadInicial = 600f;
     public Rigidbody rig;
 
-    bool enJuego = false;
+    bool enJuego;
 
     Vector3 posicionInicial;
     public Transform barra;
 
-
-
+    public ElementoInteractivo pantalla;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +27,7 @@ public class Pelota : MonoBehaviour
         enJuego = false; 
         rig.isKinematic = true;
         rig.velocity = Vector3.zero;
+        DetenerMovimiento();
 
     }
 
@@ -40,7 +40,7 @@ public class Pelota : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!enJuego && Input.GetButtonDown("Fire1")) 
+        if (!enJuego && (Input.GetButtonDown("Fire1") || pantalla.pulsado)) 
         {
             enJuego = true;
             transform.SetParent(null);
