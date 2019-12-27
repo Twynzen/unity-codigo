@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EmpezarPartida : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class EmpezarPartida : MonoBehaviour
         {
             Puntos.puntos = 0;
             vidas.Vidas = 3;
-            Application.LoadLevel("Nivel1");
+            SceneManager.LoadScene("Nivel1");
         }
     }
 }
